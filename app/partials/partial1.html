@@ -1,1 +1,54 @@
-<p>This is the partial for view 1.</p>
+
+
+ <!--   <kv-player>
+        <video id="Video1" width="320" height="240"
+               ng-src="{{selectedVideo.src}}" type="video/mp4"
+               controls>
+
+        </video>
+    </kv-player>
+-->
+
+    <div>
+        <video id="Video1" width="320" height="240"
+           ng-src="{{selectedVideo.src}}" type="video/mp4"
+           controls kv-player></video>
+
+        <div>Current Playback Time: {{playbackTime}}</div>
+    </div>
+
+    <div>
+     <span><h5>Click to change video:</h5></span>
+        <video-link ng-repeat="vid in videos"
+                    id="{{vid.id}}"
+                    type="{{vid.type}}"
+                    title="{{vid.title}}"
+                    src="{{vid.src}}"
+                    time="{{vid.startTime}}"></video-link>
+
+
+    </div>
+
+    <div>
+
+
+
+    <hr>
+        <span><h5>Debug data:</h5></span>
+        <div>Video source: {{selectedVideo.src}}</div>
+        <div>Video time in: {{selectedVideo.startTime}}</div>
+
+
+    <hr>
+        <span><h5>Issues / Questions:</h5></span>
+            <ul>
+                <li>In Safari - videos always load & flash to time 0 then seek to time in  - not in chrome</li>
+                <li>Switching videos will need some sort of smooth transition - player has lots of progress type events to trigger fades?</li>
+                <li>Playback time can only be reported out of the video element for the current video so playlists will require logic to deal with overall duration / playback</li>
+                <li>Investigation of how Angular can access same events in 3rd party players is needed</li>
+            </ul>
+    </div>
+
+
+
+
