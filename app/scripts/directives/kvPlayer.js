@@ -7,7 +7,6 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
 		link: function postLink(scope, element, attrs) {
 			videoService.setVideoElement(element[0]);
 			scope.$watch('selectedVideo', function() {
-				console.log("VIDEO", scope.selectedVideo.src);
 				// wait until video can be played, then set time
 				element[0].addEventListener('canplay', function() {
 					element[0].currentTime = scope.selectedVideo.startTime;

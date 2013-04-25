@@ -32,7 +32,6 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
 	$scope.playbackTime = 0;
 	// listen for service broadcast of click
 	$scope.$on('handleVideoClick', function() {
-		console.log('Set Video: ', videoService.getVideo().src);
 		$scope.selectedVideo = videoService.getVideo();
 	});
 	// listen for video playback time

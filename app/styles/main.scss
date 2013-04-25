@@ -1,7 +1,8 @@
 @import "compass_twitter_bootstrap";
 
-.badge-info {
-	margin-right: 5px;
+video {
+  width: 100%    !important;
+  height: auto   !important;
 }
 .video-container {
 	margin: 0;
@@ -15,6 +16,9 @@
 }
 .video {
 	margin: 0;
+}
+.badge-info {
+	margin-right: 5px;
 }
 .label-info {
 	letter-spacing:1px;
