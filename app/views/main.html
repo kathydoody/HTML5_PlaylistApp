@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="well span4">
+			<h3>Playlist:</h3>
+			<video-link ng-repeat="vid in videos"
+				id="{{vid.id}}"
+				type="{{vid.type}}"
+				title="{{vid.title}}"
+				src="{{vid.src}}"
+				time="{{vid.startTime}}"
+				index="{{$index + 1}}">
+			</video-link>
+		</div>
+		<div class="well span8 video-container">
+			<video id="Video1" class="video" width="320" height="260"
+				ng-src="{{selectedVideo.src}}" type="video/mp4"
+			controls kv-player></video>
+			<h6>Current Playback Time: <span class="label label-info">{{playbackTime | timeFilter}}</span></h6>
+		</div>
+	</div>
+</div>
