@@ -11,13 +11,13 @@ files = [
   'app/components/angular-mocks/angular-mocks.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
+  'app/views/**/*.html',
   //'test/mock/**/*.js',
-  'test/spec/**/*.js',
-  'app/views/templates/*.html'
+  'test/spec/**/*.js'
 ];
 
 preprocessors = {
-  '**/*.html': 'html2js'
+  'app/views/**/*.html': 'html2js'
 };
 
 // list of files to exclude
