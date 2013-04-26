@@ -5,7 +5,7 @@ describe('Directive: kvList', function() {
 
 	beforeEach(angular.mock.module('knowledgevisionHtml5PlaylistappApp'));
 
-	beforeEach(module('app/views/templates/videoList.html'));
+	beforeEach(module('views/templates/videoList.html'));
 
 	beforeEach(inject(function($rootScope, $compile) {
     // we might move this tpl into an html file as well...
