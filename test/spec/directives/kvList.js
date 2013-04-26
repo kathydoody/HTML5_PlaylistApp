@@ -1,25 +1,52 @@
 'use strict';
 
-describe('directives', function() {
-	var compile,
-	scope,
-	videoLink;
+describe('Directive: kvList', function() {
+	var elm, scope;
 
-	beforeEach(module('knowledgevisionHtml5PlaylistappApp'));
-	beforeEach(module('views/templates/videoList.html'));
+	beforeEach(angular.mock.module('knowledgevisionHtml5PlaylistappApp'));
 
-	beforeEach(inject(function($compile, $rootScope) {
+	beforeEach(module('app/views/templates/videoList.html'));
 
-		compile = $compile;
-		scope = $rootScope;
-		videoLink = angular.element('<video-link></video-link>');
-		compile(videoLink)(scope);
-		scope.$digest();
-	}));
+	beforeEach(inject(function($rootScope, $compile) {
+    // we might move this tpl into an html file as well...
+    elm = angular.element('<div class="well span4"><h3>Playlist:</h3><video-link ng-repeat="vid in videos" id="{{vid.id}}" type="{{vid.type}}" title="{{vid.title}}" src="{{vid.src}}" time="{{vid.startTime}}" index="{{$index + 1}}"></video-link></div>');
 
-	it('should render the videoLink directive', function() {
-		var lis = videoLink.find('li');
-		console.log("length: ", lis.length); // should output 1
-		expect(lis.length).toBe(1);
+    scope = $rootScope;
+
+    scope.videos = [{
+		'id': '1',
+		'type': 'mp4',
+		'title': 'Big Buck Bunny',
+		'src': 'assets/big_buck_bunny.mp4',
+		'startTime': 14
+	},{
+		'id': '2',
+		'type': 'mp4',
+		'title': 'Goofy Pirates',
+		'src': 'assets/pirateSong.mp4',
+		'startTime': 53
+	}];
+
+
+    $compile(elm)(scope);
+    scope.$digest();
+  }));
+
+	iit("should display the number of item in the videos list", function() {
+		var list = elm.find('li');
+		expect(list.length).toBe(2);
 	});
+
+	iit("should display the index number from the item in videos list", function() {
+		var p = elm.find('span');
+		expect(p.eq(0).text()).toBe('1');
+		expect(p.eq(1).text()).toBe('2');
+	});
+
+	iit("should display the name from the videos list", function() {
+		var p = elm.find('p');
+		expect(p.eq(0).text()).toBe('Big Buck Bunny');
+		expect(p.eq(1).text()).toBe('Goofy Pirates');
+	});
+	
 });
