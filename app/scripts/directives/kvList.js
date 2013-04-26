@@ -12,7 +12,7 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
 			time: '@time',
 			index: '@index'
 		},
-		templateUrl: 'views/templates/videoList.html',
+		templateUrl: 'app/views/templates/videoList.html',
 		link: function postLink(scope, element, attrs) {
 			// react to click
 			element.bind('click', function() {
