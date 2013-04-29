@@ -32,18 +32,18 @@ describe('Directive: kvList', function() {
     scope.$digest();
   }));
 
-	iit("should display the number of item in the videos list", function() {
+	it("should display the number of item in the videos list", function() {
 		var list = elm.find('li');
 		expect(list.length).toBe(2);
 	});
 
-	iit("should display the index number from the item in videos list", function() {
+	it("should display the index number from the item in videos list", function() {
 		var p = elm.find('span');
 		expect(p.eq(0).text()).toBe('1');
 		expect(p.eq(1).text()).toBe('2');
 	});
 
-	iit("should display the name from the videos list", function() {
+	it("should display the name from the videos list", function() {
 		var p = elm.find('p');
 		expect(p.eq(0).text()).toBe('Big Buck Bunny');
 		expect(p.eq(1).text()).toBe('Goofy Pirates');
