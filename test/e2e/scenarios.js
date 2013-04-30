@@ -29,7 +29,7 @@ describe('knowledgevisionHtml5PlaylistappApp App', function() {
 
 		it('should set the correct video source', function() {
 			element('ul.video-list li:eq(1)').click();
-			using('.video-container').expect(src('#Video1')).toBe('assets/pirateSong.mp4');
+			using('.video-container video').expect(binding('selectedVideo.src')).toBe('assets/pirateSong.mp4');
 		});
 	});
 });

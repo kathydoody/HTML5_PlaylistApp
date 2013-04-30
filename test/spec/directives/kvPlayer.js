@@ -31,7 +31,7 @@ describe('Directive: kvPlayer', function() {
 	}));
 
 	it("should assign the correct video source", function() {
-		//var v = elm.find('video');
-		//expect(v.eq(0).src).toBe('assets/big_buck_bunny.mp4');
+		var v = elm.find('video');
+		expect(v.eq(0).src).toBe('assets/big_buck_bunny.mp4');
 	});
 });
