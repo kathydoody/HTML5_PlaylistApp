@@ -1,11 +1,12 @@
 'use strict';
 
 describe('Directive: kvPlayer', function() {
-	var elm, scope;
+	var elm, scope, testVideoService;
 
 	beforeEach(angular.mock.module('knowledgevisionHtml5PlaylistappApp'));
 
-	beforeEach(inject(function($rootScope, $compile) {
+	beforeEach(inject(function($rootScope, $compile, videoService) {
+		testVideoService = videoService;
 		// we might move this tpl into an html file as well...
 		elm = angular.element('<div class="well span8 video-container"><video id="Video1" class="video" ng-src="{{selectedVideo.src}}" type="video/mp4" controls kv-player></video></div>');
 
@@ -24,14 +25,18 @@ describe('Directive: kvPlayer', function() {
 			'src': 'assets/pirateSong.mp4',
 			'startTime': 53
 		}];
-
+		scope.selectedVideo = scope.videos[0];
 
 		$compile(elm)(scope);
 		scope.$digest();
 	}));
 
 	it("should assign the correct video source", function() {
-		var v = elm.find('video');
-		expect(v.eq(0).src).toBe('assets/big_buck_bunny.mp4');
+		var v = elm.find('video')[0];
+		expect(v.getAttribute('src')).toBe('assets/big_buck_bunny.mp4');
+	});
+
+	it("should have a video service mock (testing)", function() {
+		spyOn(testVideoService, 'setVideoElement');
 	});
 });
