@@ -1,19 +1,18 @@
 'use strict';
 
-describe('Filter: timeFilter', function () {
+describe('Filter: timeFilter', function() {
 
   // load the filter's module
   beforeEach(module('knowledgevisionHtml5PlaylistappApp'));
 
   // initialize a new instance of the filter before each test
   var timeFilter;
-  beforeEach(inject(function ($filter) {
+  beforeEach(inject(function($filter) {
     timeFilter = $filter('timeFilter');
   }));
 
-  it('should return the input prefixed with "timeFilter filter:"', function () {
-    var text = 'angularjs';
-    //expect(timeFilter(text)).toBe('timeFilter filter: ' + text);
+  it('should return a number in a time format', function() {
+    expect(timeFilter(0)).toBe('00:00');
   });
 
 });

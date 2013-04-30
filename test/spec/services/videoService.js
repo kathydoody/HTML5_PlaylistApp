@@ -11,8 +11,13 @@ describe('Service: videoService', function () {
     videoService = _videoService_;
   }));
 
-  it('should do something', function () {
-    // /expect(!!videoService).toBe(true);
+  it('should return the default playback time', function () {
+    expect(videoService.getPlaybackTime()).toBe(10);
   });
 
+  it('should update the playback time', function () {
+    videoService.trackPlayback(20);
+    expect(videoService.getPlaybackTime()).toBe(20);
+  });
+  // Test event broadcast
 });
