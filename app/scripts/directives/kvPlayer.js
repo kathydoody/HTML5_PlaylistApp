@@ -4,7 +4,7 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
 	.directive('kvPlayer', function(videoService) {
 	return {
 		restrict: 'A',
-		link: function postLink(scope, element, attrs) {
+		link: function postLink(scope, element) {
 			var videoElement = element[0];
 			// Register listener for canplay event
 			videoElement.addEventListener('canplay', function() {
