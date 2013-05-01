@@ -314,4 +314,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', ['build']);
+  // Travis CI task.
+  grunt.registerTask('travis', ['jshint', 'karma:unit', 'karma:e2e']);
+
 };
