@@ -1,4 +1,4 @@
-HTML5_PlaylistApp
+HTML5_PlaylistApp [![Build Status](https://travis-ci.org/newtriks/HTML5_PlaylistApp.png?branch=master)](https://travis-ci.org/newtriks/HTML5_PlaylistApp)
 =================
 
 ## Setup
