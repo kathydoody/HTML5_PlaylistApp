@@ -50,6 +50,4 @@ describe('Service: testVideoService', function() {
     expect(timeUpdatedVideoListener).toHaveBeenCalled();
   });
 
-  // http://tobyho.com/2011/12/15/jasmine-spy-cheatsheet/
-  // http://southdesign.de/blog/mock-angular-js-modules-for-test-di.html
 });
