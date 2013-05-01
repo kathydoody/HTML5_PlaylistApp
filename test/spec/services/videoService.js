@@ -1,37 +1,55 @@
 'use strict';
 
-describe('Service: videoService', function () {
+describe('Service: testVideoService', function() {
 
   // load the service's module
   beforeEach(module('knowledgevisionHtml5PlaylistappApp'));
 
   // instantiate service
-  var videoService;
-  beforeEach(inject(function (_videoService_) {
-    videoService = _videoService_;
+  var rootScope, testVideoService;
+
+  beforeEach(inject(function($rootScope, $compile, videoService) {
+    rootScope = $rootScope;
+    testVideoService = videoService;
   }));
 
-  it('should have a service', function () {
-    expect(videoService).toNotEqual(null);
+  it('should have a service', function() {
+    expect(testVideoService).toNotEqual(null);
   });
 
-  it('should return the default playback time', function () {
-    expect(videoService.getPlaybackTime()).toBe(10);
+  it('should return the default playback time', function() {
+    expect(testVideoService.getPlaybackTime()).toBe(10);
   });
 
-  it('should update the playback time', function () {
-    videoService.trackPlayback(20);
-    expect(videoService.getPlaybackTime()).toBe(20);
+  it('should update the playback time', function() {
+    testVideoService.trackPlayback(20);
+    expect(testVideoService.getPlaybackTime()).toBe(20);
   });
 
-  it('should set a video', function () {
-    videoService.setVideo({});
-    expect(videoService.getVideo()).toNotEqual(null);
+  it('should set a video', function() {
+    testVideoService.setVideo({});
+    expect(testVideoService.getVideo()).toNotEqual(null);
   });
 
-  it('should get a video', function () {
-    videoService.setVideo({});
-    expect(videoService.getVideo()).toNotEqual(null);
+  it('should get a video', function() {
+    testVideoService.setVideo({});
+    expect(testVideoService.getVideo()).toNotEqual(null);
   });
-  // Test event broadcast
+
+  it('should broadcast selectedVideo event on setVideo', function() {
+    var selectedVideoListener = jasmine.createSpy('listener');
+    rootScope.$on('selectedVideo', selectedVideoListener);
+    testVideoService.setVideo({});
+    expect(selectedVideoListener).toHaveBeenCalled();
+  });
+
+  it('should broadcast timeUpdated event on trackPlayback', function() {
+    var timeUpdatedVideoListener = jasmine.createSpy('listener');
+    rootScope.$on('timeUpdated', timeUpdatedVideoListener);
+    testVideoService.trackPlayback(20);
+    expect(timeUpdatedVideoListener).toHaveBeenCalled();
+  });
+
+  // http://tobyho.com/2011/12/15/jasmine-spy-cheatsheet/
+  // http://southdesign.de/blog/mock-angular-js-modules-for-test-di.html
 });

@@ -10,7 +10,10 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
     setVideo: function(videoObj) {
       video = videoObj;
       startTime = video.startTime;
-      $rootScope.$broadcast('handleVideoClick');
+      $rootScope.$broadcast('selectedVideo');
+    },
+    getVideo: function() {
+      return angular.copy(video);
     },
     trackPlayback: function(time) {
       playbackTime = time;
@@ -18,9 +21,6 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
     },
     getPlaybackTime: function() {
       return angular.copy(playbackTime);
-    },
-    getVideo: function() {
-      return angular.copy(video);
     },
     getVideoStartTime: function() {
       return angular.copy(startTime);
