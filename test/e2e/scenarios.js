@@ -1,45 +1,34 @@
 'use strict';
 
-/* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
+describe('knowledgevisionHtml5PlaylistappApp App', function() {
 
-describe('my app', function() {
+	beforeEach(function() {
+		browser().navigateTo('/');
+	});
 
-  beforeEach(function() {
-    browser().navigateTo('../../app/index.html');
-  });
+	describe('Main view', function() {
+		it('should display the correct route', function() {
+			expect(browser().location().path()).toBe('/');
+		});
 
+		it('should display the correct count of videos in the list', function() {
+			expect(repeater('ul.video-list li').count()).toBe(3);
+		});
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser().location().url()).toBe("/view1");
-  });
+		it('should display the currently playing video title', function() {
+			element('ul.video-list li:eq(1)').click();
+			using('.video-container h6').expect(binding('selectedVideo.title')).toBe('Goofy Pirates');
+		});
 
+		it('should display the correct video time formatted', function() {
+			element('ul.video-list li:eq(1)').click();
+			using('.video-container span').expect(binding('playbackTime')).toBe('00:00');
+		});
 
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser().navigateTo('#/view1');
-    });
-
-
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 1/);
-    });
-
-  });
-
-
-  describe('view2', function() {
-
-    beforeEach(function() {
-      browser().navigateTo('#/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 2/);
-    });
-
-  });
+		it('should set the correct video source', function() {
+			element('ul.video-list li:eq(1)').click();
+			using('.video-container video').expect(binding('selectedVideo.src')).toBe('assets/pirateSong.mp4');
+		});
+	});
 });
+

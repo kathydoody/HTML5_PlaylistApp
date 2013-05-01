@@ -1,8 +1,5 @@
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
-
-.project
-.settings
-.idea/*
+node_modules
+dist
+.tmp
+.sass-cache
+app/components

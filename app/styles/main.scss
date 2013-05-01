@@ -1,0 +1,25 @@
+@import "compass_twitter_bootstrap";
+
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+.video-container {
+	margin: 0;
+	display: block;
+	text-align: center;
+}
+.video-list {
+	list-style:none;
+	margin:0 0 5px 0;
+	padding:0;
+}
+.video {
+	margin: 0;
+}
+.badge-info {
+	margin-right: 5px;
+}
+.label-info {
+	letter-spacing:1px;
+}
