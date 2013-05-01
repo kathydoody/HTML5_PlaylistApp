@@ -7,7 +7,7 @@ describe('Directive: kvPlayer', function() {
 
 	beforeEach(inject(function($rootScope, $compile, videoService) {
 		testVideoService = videoService;
-		
+
 		// we might move this tpl into an html file as well...
 		elm = angular.element('<div class="well span8 video-container"><video id="Video1" class="video" ng-src="{{selectedVideo.src}}" type="video/mp4" controls kv-player></video></div>');
 
@@ -42,5 +42,13 @@ describe('Directive: kvPlayer', function() {
 		var v = elm.find('video')[0];
 		expect(testVideoService.setVideoElement).toHaveBeenCalledWith(v);
 	});
-	
+
+	it('should broadcast canplay event', function() {
+		var v = elm.find('video')[0];
+		var evt = document.createEvent('Event');
+		evt.initEvent('canplay', true, true);
+		v.dispatchEvent(evt);
+		expect(v.currentTime).toBe(14);
+	});
+
 });

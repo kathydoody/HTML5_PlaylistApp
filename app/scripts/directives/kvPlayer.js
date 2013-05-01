@@ -8,9 +8,11 @@ angular.module('knowledgevisionHtml5PlaylistappApp')
 			var videoElement = element[0];
 			// Register listener for canplay event
 			videoElement.addEventListener('canplay', function() {
-				console.log("can play");
 				videoElement.currentTime = scope.selectedVideo.startTime;
-				videoElement.play();
+				// More for testing purposes than anything
+				if(typeof videoElement !== 'undefined' && videoElement.play) {
+					videoElement.play();
+				}
 			});
 			// Set the video object on the videoService
 			videoService.setVideoElement(videoElement);
