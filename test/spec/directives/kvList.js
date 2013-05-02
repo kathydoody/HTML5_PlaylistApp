@@ -32,7 +32,7 @@ describe('Directive: kvList', function() {
 		scope.$digest();
 	}));
 
-	it("should display the number of item in the videos list", function() {
+	it("should display the number of items in the videos list", function() {
 		var list = elm.find('li');
 		expect(list.length).toBe(2);
 	});
