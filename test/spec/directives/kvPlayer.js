@@ -1,13 +1,14 @@
 'use strict';
 
 describe('Directive: kvPlayer', function() {
-	var elm, scope, testVideoService;
+	var elm, scope, testVideoService, $document;
+	var Event = jasmine.helpers.Event;
 
 	beforeEach(angular.mock.module('knowledgevisionHtml5PlaylistappApp'));
 
-	beforeEach(inject(function($rootScope, $compile, videoService) {
+	beforeEach(inject(function($rootScope, $compile, $window, videoService) {
 		testVideoService = videoService;
-
+		$document = $window.document;
 		// we might move this tpl into an html file as well...
 		elm = angular.element('<div class="well span8 video-container"><video id="Video1" class="video" ng-src="{{selectedVideo.src}}" type="video/mp4" controls kv-player></video></div>');
 
@@ -45,10 +46,11 @@ describe('Directive: kvPlayer', function() {
 
 	it('should broadcast canplay event', function() {
 		var v = elm.find('video')[0];
-		var evt = document.createEvent('Event');
-		evt.initEvent('canplay', true, true);
-		v.dispatchEvent(evt);
-		expect(v.currentTime).toBe(14);
+		spyOn($document, 'createEvent');
+		//var evt = Event.create(win.document, 'canplay');
+		//v.dispatchEvent(Event.create(win.document, 'canplay'));
+		//expect(v.currentTime).toBe(14);
+		//var showSpy = jasmine.spyOn($window, 'addEventListener');
 	});
 
 });
