@@ -3,7 +3,7 @@
 angular.module('knowledgevisionHtml5PlaylistappApp')
 	.controller('MainCtrl', function($scope, $http, videoService) {
 
-	  	$scope.templateUrl = "views/main.html";
+	  	//$scope.templateUrl = "views/main.html";
 	  	$http.get("config.json").then(function(response){
 	  		//To simulate long callback time
 	  		setTimeout(function() {  

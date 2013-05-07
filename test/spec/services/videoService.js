@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: testVideoService', function() {
+describe('Service: videoService', function() {
 
   // load the service's module
   beforeEach(module('knowledgevisionHtml5PlaylistappApp'));
